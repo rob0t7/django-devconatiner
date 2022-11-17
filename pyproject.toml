@@ -1,0 +1,44 @@
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Robert Jackiewicz", email = "rob@jackiewicz.ca"},
+]
+dependencies = [
+    "django>=4.1.3",
+    "setuptools>=65.5.1",
+    "ipython>=8.6.0",
+]
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+[project.optional-dependencies]
+
+[build-system]
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"
+
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=22.10.0",
+    "pylama[radon]>=8.4.1",
+    "django-stubs>=1.13.0",
+    "django-stubs-ext>=0.7.0",
+    "pyright>=1.1.280",
+    "django-types>=0.16.0",
+]
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "mysite.settings"
+
+[tool.pyright]
+exclude = ["**/node_modules",
+"**/__pypackages__",
+]
+
+pythonVersion = "3.11"
+pythonPlatform = "Linux"
