@@ -27,6 +27,9 @@ dev = [
     "django-stubs-ext>=0.7.0",
     "pyright>=1.1.280",
     "django-types>=0.16.0",
+    "pytest>=7.2.0",
+    "pytest-django>=4.5.2",
+    "django-pytest>=0.2.0",
 ]
 
 [tool.mypy]
@@ -42,3 +45,8 @@ exclude = ["**/node_modules",
 
 pythonVersion = "3.11"
 pythonPlatform = "Linux"
+
+[tool.pdm.scripts]
+test = "pytest ."
+lint = "pylama ."
+runserver = "./manage.py runserver"
