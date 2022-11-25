@@ -1,0 +1,119 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-devcontainer
+  labels:
+    app: django-devcontainer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-devcontainer
+  template:
+    metadata:
+      labels:
+        app: django-devcontainer
+    spec:
+      securityContext:
+        fsGroup: 1000
+      initContainers:
+        - name: django-devcontainer-migrations
+          image: django-devcontainer:latest
+          imagePullPolicy: IfNotPresent
+          command:
+            - pdm
+            - migrate
+          envFrom:
+            - configMapRef:
+                name: django-config
+                optional: false
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: django-config
+              mountPath: /home/django/.pg_service.conf
+              subPath: .pg_service.conf
+            - name: django-config
+              mountPath: /home/django/.pgpass
+              subPath: .pgpass
+        - name: django-devcontainer-staticfiles
+          image: django-devcontainer:latest
+          imagePullPolicy: IfNotPresent
+          command:
+            - pdm
+            - collectstatic
+          envFrom:
+            - configMapRef:
+                name: django-config
+                optional: false
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - mountPath: /var/www/static
+              name: staticfiles
+              readOnly: false
+            - name: django-config
+              mountPath: /home/django/.pg_service.conf
+              subPath: .pg_service.conf
+            - name: django-config
+              mountPath: /home/django/.pgpass
+              subPath: .pgpass
+      containers:
+        - name: django-devcontainer
+          image: django-devcontainer:latest
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - name: django
+              containerPort: 8000
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: django-config
+                optional: false
+          volumeMounts:
+            - name: django-config
+              mountPath: /home/django/.pg_service.conf
+              subPath: .pg_service.conf
+            - name: django-config
+              mountPath: /home/django/.pgpass
+              subPath: .pgpass
+        - name: nginx-sidecar
+          image: nginx:stable
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/www/static
+              name: staticfiles
+              readOnly: true
+            - name: nginx
+              mountPath: /etc/nginx/conf.d
+      volumes:
+        - name: staticfiles
+          emptyDir: {}
+        - name: nginx
+          configMap:
+            name: nginx-conf
+        - name: django-config
+          configMap:
+            name: django-config
+            defaultMode: 0600

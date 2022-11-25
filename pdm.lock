@@ -73,9 +73,35 @@ dependencies = [
 ]
 
 [[package]]
+name = "django-allow-cidr"
+version = "0.5.0"
+summary = "A Django Middleware to enable use of CIDR IP ranges in ALLOWED_HOSTS."
+dependencies = [
+    "Django>=2.2",
+    "packaging",
+]
+
+[[package]]
+name = "django-ipware"
+version = "4.0.2"
+requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
+summary = "A Django application to retrieve user's IP address"
+
+[[package]]
 name = "django-pytest"
 version = "0.2.0"
 summary = "django test runner to use py.test tests"
+
+[[package]]
+name = "django-structlog"
+version = "4.0.1"
+requires_python = ">=3.7"
+summary = "Structured Logging for Django"
+dependencies = [
+    "django-ipware",
+    "django>=3.2",
+    "structlog>=21.4.0",
+]
 
 [[package]]
 name = "django-stubs"
@@ -265,6 +291,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "psycopg2"
+version = "2.9.5"
+requires_python = ">=3.6"
+summary = "psycopg2 - Python-PostgreSQL Database Adapter"
+
+[[package]]
 name = "ptyprocess"
 version = "0.7.0"
 summary = "Run a subprocess in a pseudo terminal"
@@ -362,6 +394,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "python-dotenv"
+version = "0.21.0"
+requires_python = ">=3.7"
+summary = "Read key-value pairs from a .env file and set them as environment variables"
+
+[[package]]
 name = "radon"
 version = "5.1.0"
 summary = "Code Metrics in Python"
@@ -405,6 +443,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "structlog"
+version = "22.3.0"
+requires_python = ">=3.7"
+summary = "Structured Logging for Python"
+
+[[package]]
 name = "tomli"
 version = "2.0.1"
 requires_python = ">=3.7"
@@ -445,7 +489,7 @@ summary = "Measures the displayed width of unicode strings in a terminal"
 
 [metadata]
 lock_version = "4.0"
-content_hash = "sha256:90ff644cd3bae3f3f59ee84a57f4973cbdb929da568da7c432eff69d7a8befe4"
+content_hash = "sha256:77d7112a52a04eb9bb28d6c3d8b726d90d969cc4e47fb41fede9f18c3c9942d7"
 
 [metadata.files]
 "appnope 0.1.3" = [
@@ -507,8 +551,20 @@ content_hash = "sha256:90ff644cd3bae3f3f59ee84a57f4973cbdb929da568da7c432eff69d7
     {url = "https://files.pythonhosted.org/packages/4f/be/cd28514516e66c40b87e487be68cf61a1637bd3ec60a2db90bb5075a2df5/Django-4.1.3-py3-none-any.whl", hash = "sha256:6b1de6886cae14c7c44d188f580f8ba8da05750f544c80ae5ad43375ab293cd5"},
     {url = "https://files.pythonhosted.org/packages/d0/ab/33f9c2bd4cf7ff2d319131eca7231247f962f781ebc8a012ebe02582244a/Django-4.1.3.tar.gz", hash = "sha256:678bbfc8604eb246ed54e2063f0765f13b321a50526bdc8cb1f943eda7fa31f1"},
 ]
+"django-allow-cidr 0.5.0" = [
+    {url = "https://files.pythonhosted.org/packages/68/c3/c5d49d9829175d2edb4d3661880634284ec281a4970d71a91cf5e2ccfe13/django_allow_cidr-0.5.0-py2.py3-none-any.whl", hash = "sha256:2fd88ffe697caf0c1d0fd147b88cf44d81282c069bbc475166a2ff1637ad9155"},
+    {url = "https://files.pythonhosted.org/packages/a0/36/b57a1b773b0afa82680473e34f6baa176e4c00691bf7d8204c0fd87f74a7/django-allow-cidr-0.5.0.tar.gz", hash = "sha256:d17347e75d6c02864022f52ed608775a5e9ab144d1a82bb40853714f125f5d87"},
+]
+"django-ipware 4.0.2" = [
+    {url = "https://files.pythonhosted.org/packages/42/2e/a42b9a9554de99e17fc93f108c49d6627633989b4c95cfa8bee7db1294ee/django-ipware-4.0.2.tar.gz", hash = "sha256:602a58325a4808bd19197fef2676a0b2da2df40d0ecf21be414b2ff48c72ad05"},
+    {url = "https://files.pythonhosted.org/packages/45/1e/61cd5bde3a7c640ae4e935c9910e6b4c4a492cb78ff32915f779ff5150ff/django_ipware-4.0.2-py2.py3-none-any.whl", hash = "sha256:878dbb06a87e25550798e9ef3204ed70a200dd8b15e47dcef848cf08244f04c9"},
+]
 "django-pytest 0.2.0" = [
     {url = "https://files.pythonhosted.org/packages/b2/e2/2a87105042c08a6f116aac1d9c666e89982a4f707652a0f7d76e8a88b554/django-pytest-0.2.0.tar.gz", hash = "sha256:de21f20f9e7eb941529d75078b18192506a9f6d4ae80f86fbe2f3bcac8e09d71"},
+]
+"django-structlog 4.0.1" = [
+    {url = "https://files.pythonhosted.org/packages/13/0e/fd0b3fd680e2a7a476eb9ef9b428a88ac556442a2f5186c821f7fd21ddb2/django_structlog-4.0.1-py3-none-any.whl", hash = "sha256:07c23f00e5a0a7ef3cfb9d8f8a2e2ca3673b3c834f84a68ce74cba51137b5b34"},
+    {url = "https://files.pythonhosted.org/packages/1a/ea/f9edd2398297415054a8535c9fd2318116c93493a638dace8ae8bd3fc09e/django-structlog-4.0.1.tar.gz", hash = "sha256:ddcae640fee8552ba93809621c15ab5d39ca5748d16e934cd5ee63cdf30b9625"},
 ]
 "django-stubs 1.13.0" = [
     {url = "https://files.pythonhosted.org/packages/27/a9/552eedf9ff05bbb09d2b2438b5ffdb4a4b23796a030127cb7d6cce0c5990/django-stubs-1.13.0.tar.gz", hash = "sha256:424fdd1935f859a802365056f9ccf4db12d1d93a5ab3de6d5633dddba0c5fc76"},
@@ -629,6 +685,21 @@ content_hash = "sha256:90ff644cd3bae3f3f59ee84a57f4973cbdb929da568da7c432eff69d7
     {url = "https://files.pythonhosted.org/packages/03/22/784990e865d847384c28a05ff33ed09791251b320c212f957c62a11bd2ab/prompt_toolkit-3.0.32-py3-none-any.whl", hash = "sha256:24becda58d49ceac4dc26232eb179ef2b21f133fecda7eed6018d341766ed76e"},
     {url = "https://files.pythonhosted.org/packages/e2/d9/1009dbb3811fee624af34df9f460f92b51edac528af316eb5770f9fbd2e1/prompt_toolkit-3.0.32.tar.gz", hash = "sha256:e7f2129cba4ff3b3656bbdda0e74ee00d2f874a8bcdb9dd16f5fec7b3e173cae"},
 ]
+"psycopg2 2.9.5" = [
+    {url = "https://files.pythonhosted.org/packages/04/51/00ed720de223485a56c28b404747b96806679e720f4c97a75bdd556a01f4/psycopg2-2.9.5-cp310-cp310-win32.whl", hash = "sha256:d3ef67e630b0de0779c42912fe2cbae3805ebaba30cda27fea2a3de650a9414f"},
+    {url = "https://files.pythonhosted.org/packages/10/db/a34baee6275fcc371ecdb30040042ed2a548f18c29339ea9ca2406a35cba/psycopg2-2.9.5-cp39-cp39-win_amd64.whl", hash = "sha256:190d51e8c1b25a47484e52a79638a8182451d6f6dff99f26ad9bd81e5359a0fa"},
+    {url = "https://files.pythonhosted.org/packages/23/b2/679ba212dd7fc5f726913053756b23344d5520b4fa49c2a93af31d0f4508/psycopg2-2.9.5-cp311-cp311-win_amd64.whl", hash = "sha256:920bf418000dd17669d2904472efeab2b20546efd0548139618f8fa305d1d7ad"},
+    {url = "https://files.pythonhosted.org/packages/7e/48/98e0d097fc23d772f525f54b3c62becadf839f2f84ee6600e283dde5dfe7/psycopg2-2.9.5-cp38-cp38-win_amd64.whl", hash = "sha256:1a5c7d7d577e0eabfcf15eb87d1e19314c8c4f0e722a301f98e0e3a65e238b4e"},
+    {url = "https://files.pythonhosted.org/packages/83/5c/fe9e713ef1d352fbaae0ecdae05a9882ad9466f46100a8aa2962d858e62a/psycopg2-2.9.5-cp37-cp37m-win32.whl", hash = "sha256:922cc5f0b98a5f2b1ff481f5551b95cd04580fd6f0c72d9b22e6c0145a4840e0"},
+    {url = "https://files.pythonhosted.org/packages/89/d6/cd8c46417e0f7a16b4b0fc321f4ab676a59250d08fce5b64921897fb07cc/psycopg2-2.9.5.tar.gz", hash = "sha256:a5246d2e683a972e2187a8714b5c2cf8156c064629f9a9b1a873c1730d9e245a"},
+    {url = "https://files.pythonhosted.org/packages/9f/1f/df4c9ab12634dc89c71c2184b2524adccd804af2bacc8968a7c831642338/psycopg2-2.9.5-cp311-cp311-win32.whl", hash = "sha256:093e3894d2d3c592ab0945d9eba9d139c139664dcf83a1c440b8a7aa9bb21955"},
+    {url = "https://files.pythonhosted.org/packages/ae/f4/b01b7d33f5456e26b3f41fd13c93aa1c58528e3306d801133ec81dfcd81a/psycopg2-2.9.5-cp36-cp36m-win32.whl", hash = "sha256:b9ac1b0d8ecc49e05e4e182694f418d27f3aedcfca854ebd6c05bb1cffa10d6d"},
+    {url = "https://files.pythonhosted.org/packages/af/4f/3abf262dc49cb70c2fbb6d38a9a8956a0c79ba2d102e457958bc4f21660f/psycopg2-2.9.5-cp310-cp310-win_amd64.whl", hash = "sha256:4cb9936316d88bfab614666eb9e32995e794ed0f8f6b3b718666c22819c1d7ee"},
+    {url = "https://files.pythonhosted.org/packages/b4/f4/c45a12b538c1ef9e36681d2ddec7d397961bdd9ba53de01bdce32acdb348/psycopg2-2.9.5-cp38-cp38-win32.whl", hash = "sha256:f5b6320dbc3cf6cfb9f25308286f9f7ab464e65cfb105b64cc9c52831748ced2"},
+    {url = "https://files.pythonhosted.org/packages/c2/e7/5cf79928c362cd661765a18d7015b2e0b48f01d9a41dad42d7d945c11a93/psycopg2-2.9.5-cp36-cp36m-win_amd64.whl", hash = "sha256:fc04dd5189b90d825509caa510f20d1d504761e78b8dfb95a0ede180f71d50e5"},
+    {url = "https://files.pythonhosted.org/packages/c8/80/9c4a7f453fbef2acc65a66f79def6b048787f5ff82005682a98252311e68/psycopg2-2.9.5-cp39-cp39-win32.whl", hash = "sha256:322fd5fca0b1113677089d4ebd5222c964b1760e361f151cbb2706c4912112c5"},
+    {url = "https://files.pythonhosted.org/packages/d1/c5/ff268400b5fae84d8070e7b7a8c9425c635a24a68eee587f86adcf11bb13/psycopg2-2.9.5-cp37-cp37m-win_amd64.whl", hash = "sha256:1e5a38aa85bd660c53947bd28aeaafb6a97d70423606f1ccb044a03a1203fe4a"},
+]
 "ptyprocess 0.7.0" = [
     {url = "https://files.pythonhosted.org/packages/20/e5/16ff212c1e452235a90aeb09066144d0c5a6a8c0834397e03f5224495c4e/ptyprocess-0.7.0.tar.gz", hash = "sha256:5c5d0a3b48ceee0b48485e0c26037c0acd7d29765ca3fbb5cb3831d347423220"},
     {url = "https://files.pythonhosted.org/packages/22/a6/858897256d0deac81a172289110f31629fc4cee19b6f01283303e18c8db3/ptyprocess-0.7.0-py2.py3-none-any.whl", hash = "sha256:4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35"},
@@ -673,6 +744,10 @@ content_hash = "sha256:90ff644cd3bae3f3f59ee84a57f4973cbdb929da568da7c432eff69d7
     {url = "https://files.pythonhosted.org/packages/4b/21/b65ecd6686da400e2f6e3c49c2a428325abd979c9670cd97e1671f53296e/pytest_django-4.5.2-py3-none-any.whl", hash = "sha256:c60834861933773109334fe5a53e83d1ef4828f2203a1d6a0fa9972f4f75ab3e"},
     {url = "https://files.pythonhosted.org/packages/9b/42/6d6563165b82289d4a30ea477f85c04386303e51cf4e4e4651d4f9910830/pytest-django-4.5.2.tar.gz", hash = "sha256:d9076f759bb7c36939dbdd5ae6633c18edfc2902d1a69fdbefd2426b970ce6c2"},
 ]
+"python-dotenv 0.21.0" = [
+    {url = "https://files.pythonhosted.org/packages/2d/10/ff4f2f5b2a420fd09e1331d63cc87cf4367c5745c0a4ce99cea92b1cbacb/python_dotenv-0.21.0-py3-none-any.whl", hash = "sha256:1684eb44636dd462b66c3ee016599815514527ad99965de77f43e0944634a7e5"},
+    {url = "https://files.pythonhosted.org/packages/87/8d/ab7352188f605e3f663f34692b2ed7457da5985857e9e4c2335cd12fb3c9/python-dotenv-0.21.0.tar.gz", hash = "sha256:b77d08274639e3d34145dfa6c7008e66df0f04b7be7a75fd0d5292c191d79045"},
+]
 "radon 5.1.0" = [
     {url = "https://files.pythonhosted.org/packages/c0/0f/25c8256018b6e90265f440651ec60311818c01a008564c0f106b7d915b60/radon-5.1.0-py2.py3-none-any.whl", hash = "sha256:fa74e018197f1fcb54578af0f675d8b8e2342bd8e0b72bef8197bc4c9e645f36"},
     {url = "https://files.pythonhosted.org/packages/f5/37/737fb1a1786d9daed92e3ce1b8fe484c10d2a51078febffddd14ffdc0081/radon-5.1.0.tar.gz", hash = "sha256:cb1d8752e5f862fb9e20d82b5f758cbc4fb1237c92c9a66450ea0ea7bf29aeee"},
@@ -696,6 +771,10 @@ content_hash = "sha256:90ff644cd3bae3f3f59ee84a57f4973cbdb929da568da7c432eff69d7
 "stack-data 0.6.1" = [
     {url = "https://files.pythonhosted.org/packages/ac/64/2566177ef0a40ca565c230383b13673de6cffa71f75344cdadcff942cd6b/stack_data-0.6.1.tar.gz", hash = "sha256:6c9a10eb5f342415fe085db551d673955611afb821551f554d91772415464315"},
     {url = "https://files.pythonhosted.org/packages/e7/f1/a1f2fd4a75d371412650b3ddc16741e0de383fe701953566c9288f678a5b/stack_data-0.6.1-py3-none-any.whl", hash = "sha256:960cb054d6a1b2fdd9cbd529e365b3c163e8dabf1272e02cfe36b58403cff5c6"},
+]
+"structlog 22.3.0" = [
+    {url = "https://files.pythonhosted.org/packages/3a/3e/7308875945401bcbc5f3390f0150aee8e9f81ab1e5e4ea6afeffe9a2e68b/structlog-22.3.0-py3-none-any.whl", hash = "sha256:b403f344f902b220648fa9f286a23c0cc5439a5844d271fec40562dbadbc70ad"},
+    {url = "https://files.pythonhosted.org/packages/a9/9b/4236af056671ba03c788b7398785912b741fb47b6683feab96501f66fc5b/structlog-22.3.0.tar.gz", hash = "sha256:e7509391f215e4afb88b1b80fa3ea074be57a5a17d794bd436a5c949da023333"},
 ]
 "tomli 2.0.1" = [
     {url = "https://files.pythonhosted.org/packages/97/75/10a9ebee3fd790d20926a90a2547f0bf78f371b2f13aa822c759680ca7b9/tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},

@@ -10,6 +10,10 @@ dependencies = [
     "setuptools>=65.5.1",
     "ipython>=8.6.0",
     "gunicorn>=20.1.0",
+    "django-allow-cidr>=0.5.0",
+    "django-structlog>=4.0.1",
+    "psycopg2>=2.9.5",
+    "python-dotenv>=0.21.0",
 ]
 requires-python = ">=3.11"
 license = {text = "Apache-2.0"}
@@ -50,4 +54,6 @@ pythonPlatform = "Linux"
 [tool.pdm.scripts]
 test = "pytest ."
 lint = "pylama ."
-runserver = "./manage.py runserver"
+runserver = "gunicorn --bind=0.0.0.0 --workers 1 mysite.wsgi"
+collectstatic = './manage.py collectstatic --no-input'
+migrate = "./manage.py migrate"

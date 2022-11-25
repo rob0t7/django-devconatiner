@@ -12,12 +12,16 @@ RUN apt-get update && \
 
 USER ${USERNAME}
 WORKDIR /home/${USERNAME}
+ENV PATH=/home/${USERNAME}/.local/bin:$PATH
+
 RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.bashrc
 RUN pip install --upgrade pip && \
   pip install --user pdm && \
-  $HOME/.local/bin/pdm --pep582 bash >> $HOME/.bashrc && \
+  pdm --pep582 bash >> $HOME/.bashrc && \
   mkdir -p __pypackages__
 
+COPY pyproject.toml pdm.lock ./
+RUN pdm sync --production
+
 COPY --chown=$USERNAME . .
-RUN $HOME/.local/bin/pdm sync --production
-CMD ["/home/django/.local/bin/pdm", "run", "gunicorn", "mysite.wsgi"]
+CMD ["pdm", "run", "gunicorn", "--bind=0.0.0.0:8000", "mysite.wsgi"]
